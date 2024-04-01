@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  auth-service:
+    image: note
+    build:
+      context: .
+      dockerfile: dev
+    container_name: api-service
+    volumes:
+      - ".:/usr/src/service"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+    ports:
+      - "80:8080"
+    restart: always
